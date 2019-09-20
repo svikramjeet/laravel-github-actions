@@ -20,7 +20,7 @@ jobs:
     - name: Composer install
       run: |
         composer install
-    - run: php artisan migrate
+    - run: php artisan migrate --force
       env:
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
         DB_CONNECTION: ${{ secrets.DB_CONNECTION }}
