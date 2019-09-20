@@ -17,3 +17,15 @@ jobs:
         echo test, and deploy your project.
     - name: Testing Extensions
       run: php -m
+        - name: Composer install
+      run: |
+        composer install
+    - run: php artisan migrate
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DB_CONNECTION: ${{ secrets.DB_CONNECTION }}
+    - name: Code Checks
+      run: ./.deploy/commands/phpunit.sh
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        APP_KEY: ${{ secrets.APP_KEY }}
