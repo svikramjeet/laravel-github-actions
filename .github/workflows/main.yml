@@ -17,7 +17,7 @@ jobs:
         echo test, and deploy your project.
     - name: Testing Extensions
       run: php -m
-    - run: apt-get update
+    - run: sudo apt-get update
     - name: Composer install
       run: |
         composer install
