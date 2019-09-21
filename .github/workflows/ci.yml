@@ -1,0 +1,30 @@
+name: Main workflow
+on: [push]
+jobs:
+  run:
+    name: Run
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      max-parallel: 2
+      matrix:
+        operating-system: [ubuntu-latest]
+        php-versions: ['7.3']
+    services:
+      postgres:
+        image: postgres:11
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: supersecret
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Testing Composer version
+      run: composer install
+    - name: Slack notification
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_CHANNEL: general
+      uses: Ilshidur/action-slack@master
+      with:
+        args: 'A new commit has been pushed'
