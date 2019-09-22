@@ -1,1 +1,1 @@
-Github actions  + slack notification :heart:
+Github actions  + slack notification :heart: :heart:
