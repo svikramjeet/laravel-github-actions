@@ -23,8 +23,10 @@ jobs:
       run: composer install
     - name: Slack notification
       env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_CHANNEL: general
+        WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        CHANNEL: devops-vikram-jd
+        USERNAME: svikramjeet
+        TEXT: Notify slack
       uses: svikramjeet/git-actions@master
       with:
         args: 'A new commit has been pushed'
