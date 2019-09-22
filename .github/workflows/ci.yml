@@ -24,6 +24,7 @@ jobs:
     - name: Slack notification
       env:
         WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        ICON: ${{ secrets.ICON }}
         CHANNEL: devops-vikram-jd
         USERNAME: svikramjeet
         TEXT: Notify slack
